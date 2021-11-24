@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id ="address" class="org.bjit.dependencyInjection.Address" >
+        <property name="village" value="Bhuiyanpara, Meradia"/>
+        <property name="zila" value="Dhaka"/>
+        <property name="division" value="Dhaka"/>
+    </bean>
+
+   <!-- constructor base -->
+    <bean id="user-constructor-base" class="org.bjit.dependencyInjection.User">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="email" value="saiful.sust.cse@gmail.com"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <!-- property base -->
+    <bean id="user-property-base" class="org.bjit.dependencyInjection.User">
+        <property name="name" value="Saiful islam"/>
+        <property name="email" value="saiful.sust.cse@gmail.com"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+
+</beans>

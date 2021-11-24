@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id ="address" class="org.bjit.dependencyInjection.Address" >
+        <property name="village" value="Bhuiyanpara, Meradia"/>
+        <property name="zila" value="Dhaka"/>
+        <property name="division" value="Dhaka"/>
+    </bean>
+
+    <!-- default scope base -->
+    <bean id="default-scope" class="org.bjit.scope.Patient">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="age" value="26"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <!-- prototype scope base -->
+    <bean id="dafault-scope" class="org.bjit.scope.Patient" scope="singleton">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="age" value="26"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <!-- prototype scope base -->
+    <bean id="prototype-scope" class="org.bjit.scope.Patient" scope="prototype">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="age" value="26"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+</beans>

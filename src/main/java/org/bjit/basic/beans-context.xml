@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <!-- Property base-->
+    <bean id ="building" class="org.bjit.basic.Building" >
+        <property name="height" value="10"/>
+        <property name="width" value="23"/>
+    </bean>
+
+    <!-- Constructor Base -->
+
+    <bean id="building-constructor" class="org.bjit.basic.Building">
+        <constructor-arg name="height" value="20"/>
+        <constructor-arg name="width" value="30" />
+        <constructor-arg name="type" value="Building"/>
+    </bean>
+   <!-- combine -->
+    <bean id="building-combine" class="org.bjit.basic.Building">
+        <constructor-arg name="height" value="20"/>
+        <constructor-arg name="width" value="30" />
+        <property name="type">
+            <value>Building</value>
+        </property>
+    </bean>
+
+</beans>

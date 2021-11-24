@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id ="address" class="org.bjit.dependencyInjection.Address" >
+        <property name="village" value="Bhuiyanpara, Meradia"/>
+        <property name="zila" value="Dhaka"/>
+        <property name="division" value="Dhaka"/>
+    </bean>
+
+    <!-- singleton or default scope base -->
+<!--    <bean id="default-scope" class="org.bjit.initDestroy.Patient" scope="singleton" init-method="onCreate" destroy-method="onDestroy">-->
+<!--        <constructor-arg name="name" value="Saiful islam"/>-->
+<!--        <constructor-arg name="age" value="25"/>-->
+<!--        <constructor-arg name="address" ref="address"/>-->
+<!--    </bean>-->
+
+    <!-- factory bean -->
+<!--    <bean id="patientFactory"  class="org.bjit.initDestroy.PatientFactory"/>-->
+
+    <bean id="factoryBeanId" class="org.bjit.initDestroy.Patient" scope="singleton" factory-bean="patientFactory" factory-method="createPatient">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="age" value="28"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+    <!-- prototype scope base -->
+    <bean id="prototype-scope" class="org.bjit.initDestroy.Patient" scope="prototype" init-method="onCreate" destroy-method="onDestroy">
+        <constructor-arg name="name" value="Saiful islam"/>
+        <constructor-arg name="age" value="30"/>
+        <constructor-arg name="address" ref="address"/>
+    </bean>
+
+</beans>
